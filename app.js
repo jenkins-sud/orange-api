@@ -3,6 +3,7 @@
 const express = require("express");
 const bunyan = require("express-bunyan-logger");
 const bunyanLogstash  = require("bunyan-logstash");
+const request = require("request");
 
 const passport = require("passport");
 const passportAuth = require("./lib/controllers/helpers/passport.js")();
@@ -41,6 +42,25 @@ if (typeof config.logger.logstash !== "undefined") {
         })
     });
 }
+
+
+request.post(
+  {
+    url:  `${config.authServiceAPI}/auth/login`,
+    form: {username:config.authServiceUsername, password:config.authServicePassword}
+  }, function(err, httpResponse, body){
+    if (err) {
+      console.log("Error: ");
+      console.log(err);
+      return -1;
+    } else if (httpResponse.statusCode !== (200 || 201)) {
+      console.log("Error logging into Auth Service");
+      return -1;
+    }
+    app.authServiceToken = JSON.parse(body).token;
+ }
+);
+
 var logger = bunyan({
     name: "logger",
     streams: streams

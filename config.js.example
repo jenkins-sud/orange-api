@@ -17,6 +17,8 @@ config.jwtSecret = "0a6b944d-d2fb-46fc-a85e-0295c986cd9f";
 
 //Auth service
 config.authServiceAPI = "http://localhost:4000/api/v0"
+config.authServiceUsername='username';
+config.authServicePassword='Password1';
 
 // DB connections
 if (process.env.NODE_ENV === "production") {
