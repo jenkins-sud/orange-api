@@ -1,0 +1,15 @@
+version: '2'
+
+networks:
+  default:
+    external:
+      name: nextgen-svcs
+
+services:
+  orange-api:
+    build: 
+      context: .
+    image: ${DTR_PREFIX}${DTR_ORG}/orange-api:${SOURCE_BUILD_NUMBER}
+    # Expose ports [HOST:CONTAINER}
+    ports:
+      - "5000"
