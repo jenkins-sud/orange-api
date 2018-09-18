@@ -1,0 +1,11 @@
+deploy
+node_modules
+buildexcludelist.txt
+buildincludelist.txt
+Dockerfile
+app.env
+app.yml
+build.sh
+docker-compose.yml
+pre-deploy.sh
+post-deploy.sh
