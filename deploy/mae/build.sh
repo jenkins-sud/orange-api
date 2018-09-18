@@ -9,6 +9,8 @@ printf "\n\n\n\n**** RUNNING build.sh ********************\n\n"
 # Modifying the image name for PPG Automation 3.0
 # sed -i '/image:/s/$/:\${SOURCE_BUILD_NUMBER}/' docker-compose.yml
 
+copy .env.example .env
+
 # Dependency Check
 printf "\n\n**** Mandatory: Dependency Checks ********************\n"
 
